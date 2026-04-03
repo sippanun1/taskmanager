@@ -1,0 +1,40 @@
+// This is your Prisma schema file.
+// It defines your database connection and your data models (tables).
+// Think of each "model" as a table in your database.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// USER MODEL - stores registered users
+// ==========================================
+model User {
+  id        Int      @id @default(autoincrement()) // Auto-incrementing primary key
+  email     String   @unique                       // Must be unique - no duplicate accounts
+  password  String                                 // Hashed password (never store plain text!)
+  name      String                                 // User's display name
+  tasks     Task[]                                 // One user can have MANY tasks (relationship)
+  createdAt DateTime @default(now())               // Auto-set when user is created
+}
+
+// ==========================================
+// TASK MODEL - stores tasks belonging to users
+// ==========================================
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String                                  // Task title (e.g., "Buy groceries")
+  description String?                                 // Optional description (the ? means nullable)
+  status      String   @default("TODO")               // "TODO", "IN_PROGRESS", or "DONE"
+  priority    String   @default("MEDIUM")             // "LOW", "MEDIUM", or "HIGH"
+  dueDate     DateTime?                               // Optional due date
+  userId      Int                                     // Foreign key - which user owns this task
+  user        User     @relation(fields: [userId], references: [id]) // Link to User table
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt                     // Auto-updates whenever the task is modified
+}
