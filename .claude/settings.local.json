@@ -9,7 +9,9 @@
       "Bash(npm create:*)",
       "Bash(npx tsc:*)",
       "Bash(npx vite:*)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node -e \"console.log\\(require\\(''crypto''\\).randomBytes\\(32\\).toString\\(''hex''\\)\\)\")",
+      "Bash(curl -s --max-time 30 https://taskmanager-api-lo91.onrender.com/api/health)"
     ]
   }
 }
