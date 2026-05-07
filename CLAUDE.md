@@ -52,3 +52,21 @@ Backend `.env` file (in `backend/` directory):
 - Task statuses: "TODO", "IN_PROGRESS", "DONE"
 - Passwords are hashed with bcrypt before storing
 - TypeScript strict mode is enabled
+
+## Git & GitHub Workflow
+After completing any meaningful piece of work — a feature, a bug fix, a refactor, or a config change — commit and push to GitHub immediately. Never let finished work sit uncommitted.
+
+**Commit rules:**
+- Write a clear subject line in the imperative mood: `add task filtering by status`, not `added stuff`
+- Use a prefix to categorise: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`
+- If the change needs explanation, add a short body after a blank line describing *why*, not just *what*
+- Keep commits focused — one logical change per commit, not a dump of everything at once
+
+**When to commit:**
+- After scaffolding a new file or route
+- After a feature is working (even if not yet polished)
+- After fixing a bug
+- After updating environment config, Dockerfile, or schema
+- Before switching to a different part of the codebase
+
+**Push after every commit** — a commit that only lives locally offers no protection against data loss.
